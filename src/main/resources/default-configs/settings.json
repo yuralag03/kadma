@@ -1,0 +1,49 @@
+{
+  "dailyResetHour": 4,
+  "timezoneOffsetMinutes": 0,
+  "maxProzrenie": 3,
+  "prozrenieRegenPerDay": 1,
+  "mainQuestDailyLimit": 3,
+  "sideQuestDailyLimit": 5,
+  "adminPermissionLevel": 2,
+  "hudUpdateTicks": 30,
+  "autosaveSeconds": 300,
+  "markerTtlSeconds": 600,
+  "dialogueCooldownSeconds": 2,
+  "quotaCatchUpDays": 14,
+  "defaultLayer": "lower",
+  "verboseLogging": false,
+
+  "lobby": {
+    "_comment": "Lobby 'Порог'. The Stranger waits here outside the city.",
+    "world": "minecraft:overworld",
+    "x": 100.5,
+    "y": 90.0,
+    "z": 100.5,
+    "yaw": 180.0,
+    "pitch": 0.0
+  },
+
+  "citySpawn": {
+    "_comment": "Where '/kadma enter city' lands the player: broken portal on the lower layer.",
+    "world": "minecraft:overworld",
+    "x": 0.5,
+    "y": 41.0,
+    "z": 0.5,
+    "yaw": 0.0,
+    "pitch": 0.0
+  },
+
+  "features": {
+    "dialogues": true,
+    "rumors": true,
+    "dailyQuests": true,
+    "weeklyEvents": true,
+    "npcs": true,
+    "hud": true,
+    "layers": true,
+    "catchUp": true,
+    "lobbyBridge": true,
+    "visualEffects": true
+  }
+}

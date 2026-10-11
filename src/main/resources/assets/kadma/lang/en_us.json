@@ -1,0 +1,15 @@
+{
+  "kadma.hud.title": "Kadma",
+  "kadma.hud.layer": "Layer",
+  "kadma.hud.chapter": "Chapter",
+  "kadma.hud.stage": "Stage",
+  "kadma.hud.quest": "Quest",
+  "kadma.hud.prozrenie": "Insight",
+  "kadma.hud.faith": "Faith",
+  "kadma.hud.corruption": "Corruption",
+  "kadma.hud.schism": "Schism",
+  "kadma.hud.spark": "Sparks",
+  "kadma.hud.event": "Event",
+  "kadma.hud.rumors": "New rumors",
+  "kadma.chat.prefix": "[Kadma]"
+}

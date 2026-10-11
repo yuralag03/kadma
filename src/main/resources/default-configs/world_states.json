@@ -1,0 +1,18 @@
+{
+  "defaults": {
+    "_comment": "Initial world state. The server only grows from here, never resets.",
+    "faith": 70,
+    "corruption": 20,
+    "schism": 10,
+    "spark": 0,
+    "portal_shards_total": 0,
+    "global_points": 0,
+    "global_points_bonus": 0,
+    "players_total": 1,
+    "unlocked_chapter": "act0_threshold"
+  },
+  "flags": {
+    "threshold.open": "true",
+    "seal.reached": "false"
+  }
+}

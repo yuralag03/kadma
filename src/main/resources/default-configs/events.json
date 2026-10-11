@@ -1,0 +1,92 @@
+{
+  "events": [
+    {
+      "id": "ritual_light",
+      "title": "Ритуал света",
+      "description": "Круг из белого камня под порталом. Служители стоят снаружи и смотрят вниз.",
+      "layer": "lower",
+      "zone": "ritual_circle",
+      "durationSeconds": 2400,
+      "aftermathQuest": "aftermath_lower_channel",
+      "minPlayers": 2,
+      "bossbar": {"color": "YELLOW", "overlay": "PROGRESS"},
+      "announceText": [
+        "Круг света под порталом открыт. Служители не пускают дальше.",
+        "Ритуал идёт ровно. Огонь горит волнами."
+      ],
+      "rumorsOnStart": ["priest_carries_water"],
+      "rumorsOnEnd": ["sweet_after_ritual", "portal_opens_below"],
+      "globalFlags": ["event.ritual_light.done"],
+      "globalChanges": {"faith": 5, "spark": 1},
+      "schedule": {
+        "day": "friday",
+        "hour": 20,
+        "minute": 0,
+        "manualOnly": false
+      },
+      "phases": [
+        {
+          "id": "announce",
+          "title": "Созвание",
+          "description": "Служители созывают круг. Огонь поднимается медленно.",
+          "seconds": 300,
+          "type": "gather",
+          "zone": "ritual_circle",
+          "requiredPlayers": 2,
+          "messages": ["Служители выстраиваются по кругу.", "Огонь идёт волнами."],
+          "completeFlags": ["event.ritual_light.announced"],
+          "onCompleteRumor": "priest_carries_water",
+          "globalChanges": {"stats": {"faith": 1}}
+        },
+        {
+          "id": "gather",
+          "title": "Сбор круга",
+          "description": "Искры встают в круг. Камень под ногами теплеет.",
+          "seconds": 600,
+          "type": "gather",
+          "zone": "ritual_circle",
+          "requiredPlayers": 2,
+          "messages": ["Камень теплеет.", "Портал под крутом отвечает волной."],
+          "completeFlags": ["event.ritual_light.gathered"],
+          "globalChanges": {"stats": {"spark": 1}},
+          "rewards": {"items": ["portal_shard"]}
+        },
+        {
+          "id": "defend",
+          "title": "Тишина",
+          "description": "Сторожа печати выходят из стока. Они говорят только приказами.",
+          "seconds": 900,
+          "type": "defend",
+          "zone": "ritual_circle",
+          "objective": "minecraft:zombie",
+          "amount": 6,
+          "requiredPlayers": 2,
+          "messages": ["Тишина.", "Не смотри.", "Не зови."],
+          "completeFlags": ["event.ritual_light.held"],
+          "onCompleteRumor": "workers_avoid_eyes",
+          "globalChanges": {"stats": {"corruption": -4}}
+        },
+        {
+          "id": "conclusion",
+          "title": "Итог",
+          "description": "Огонь садится. Служители уходят, вода остаётся сладкой.",
+          "seconds": 600,
+          "type": "ritual",
+          "zone": "ritual_circle",
+          "requiredPlayers": 2,
+          "messages": ["Огонь садится ровно.", "Круг пустеет."],
+          "completeFlags": ["event.ritual_light.concluded"],
+          "onCompleteRumor": "sweet_after_ritual",
+          "globalChanges": {"stats": {"faith": 3, "schism": 1}}
+        }
+      ],
+      "rewards": {
+        "items": [{"itemId": "stranger_token", "amount": 2}],
+        "prozrenie": 1,
+        "experience": 80,
+        "stats": {"global_points_bonus": 4, "spark": 1},
+        "journal": ["Круг горел ровно. Я стоял в нём до конца."]
+      }
+    }
+  ]
+}

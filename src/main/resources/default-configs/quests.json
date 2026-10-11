@@ -1,0 +1,500 @@
+{
+  "quests": [
+    {
+      "id": "prologue_fall",
+      "title": "Порог",
+      "type": "prologue",
+      "chapter": "act0_threshold",
+      "stage": 0,
+      "layer": "lobby",
+      "zone": "",
+      "requiresProzrenie": 0,
+      "autoStart": true,
+      "prerequisites": [],
+      "objectives": [
+        {
+          "id": "talk_stranger",
+          "type": "talk",
+          "npc": "stranger",
+          "description": "Поговорить с Незнакомцем",
+          "amount": 1
+        },
+        {
+          "id": "choose_entry",
+          "type": "choose",
+          "dialogueId": "stranger_threshold",
+          "nodeId": "root",
+          "choiceIndex": 0,
+          "description": "Выбрать вход в город"
+        }
+      ],
+      "rewards": {
+        "items": [{"itemId": "stranger_token", "amount": 1}],
+        "prozrenie": 0,
+        "experience": 10,
+        "stats": {"spark": 1},
+        "journal": ["Незнакомец назвал меня Искрой. Он не объяснил, зачем."]
+      },
+      "unlockQuests": ["lower_01_awakening"],
+      "journalEntries": ["Я стою на пороге. Незнакомец ждёт."]
+    },
+    {
+      "id": "lower_01_awakening",
+      "title": "Первый вдох",
+      "type": "main",
+      "chapter": "act1_lower",
+      "stage": 1,
+      "layer": "lower",
+      "zone": "portal_clearing",
+      "requiresProzrenie": 1,
+      "prerequisites": ["prologue_fall"],
+      "objectives": [
+        {
+          "id": "goto_portal",
+          "type": "goto",
+          "zone": "portal_clearing",
+          "description": "Дойти до портала"
+        },
+        {
+          "id": "talk_nima",
+          "type": "talk",
+          "npc": "nima",
+          "description": "Поговорить с Нимой"
+        },
+        {
+          "id": "step_stone",
+          "type": "interact",
+          "blockId": "minecraft:black_concrete",
+          "amount": 1,
+          "description": "Наступить на чёрный камень",
+          "consume": false
+        }
+      ],
+      "rewards": {
+        "items": [{"itemId": "portal_shard", "amount": 1}],
+        "prozrenie": 0,
+        "experience": 20,
+        "stats": {"portal_shards_total": 1, "spark": 1},
+        "globalFlags": ["portal.felt"],
+        "journal": ["Нима: портал не сломан, он дышит. Я поверил."]
+      },
+      "unlockQuests": ["lower_02_shards", "daily_lower_delivery", "daily_lower_clean_channel"],
+      "journalEntries": ["Нижний слой мокрый. Чёрные камни тёплые."],
+      "flagsOnComplete": ["player.saw_portal", "player.entered_lower"],
+      "marker": "Портал"
+    },
+    {
+      "id": "lower_02_shards",
+      "title": "Осколки мёртвого портала",
+      "type": "main",
+      "chapter": "act1_lower",
+      "stage": 2,
+      "layer": "lower",
+      "zone": "portal_clearing",
+      "requiresProzrenie": 1,
+      "prerequisites": ["lower_01_awakening"],
+      "objectives": [
+        {
+          "id": "gather",
+          "type": "collect",
+          "itemId": "portal_shard",
+          "amount": 3,
+          "consume": false,
+          "description": "Собрать 3 осколка портала"
+        }
+      ],
+      "rewards": {
+        "prozrenie": 1,
+        "experience": 30,
+        "stats": {"portal_shards_total": 3, "spark": 1},
+        "globalFlags": ["shards.first_batch"],
+        "journal": ["Осколки гудят по-разному. Один говорит: не открывай. Другой: уже открыли."],
+        "rumors": ["wall_breathes"]
+      },
+      "unlockQuests": ["lower_03_crack", "daily_lower_scan_shards"],
+      "journalEntries": ["Осколки отдают голоса короткими волнами."],
+      "flagsOnComplete": ["player.collected_first_shards"],
+      "marker": "Осколки"
+    },
+    {
+      "id": "lower_03_crack",
+      "title": "Зашитый шов",
+      "type": "main",
+      "chapter": "act1_lower",
+      "stage": 3,
+      "layer": "lower",
+      "zone": "sealed_crack",
+      "requiresProzrenie": 1,
+      "prerequisites": ["lower_02_shards"],
+      "objectives": [
+        {
+          "id": "goto_crack",
+          "type": "goto",
+          "zone": "sealed_crack",
+          "description": "Подойти к трещине"
+        },
+        {
+          "id": "touch_crack",
+          "type": "interact",
+          "blockId": "minecraft:target",
+          "amount": 1,
+          "description": "Дотронуться до трещины"
+        }
+      ],
+      "rewards": {
+        "experience": 30,
+        "stats": {"corruption": 3},
+        "globalFlags": ["crack.touched"],
+        "journal": ["Трещина холодная, стена вокруг тёплая. Из неё идёт вода, крысы бегут вверх."]
+      },
+      "unlockQuests": ["lower_04_mira", "daily_lower_clean_channel"],
+      "journalEntries": ["Стена зашита проводами. Она дышит ровно."],
+      "flagsOnComplete": ["player.saw_crack"],
+      "marker": "Трещина"
+    },
+    {
+      "id": "lower_04_mira",
+      "title": "Расход в свитке",
+      "type": "main",
+      "chapter": "act1_lower",
+      "stage": 4,
+      "layer": "lower",
+      "zone": "archive_hall",
+      "requiresProzrenie": 1,
+      "prerequisites": ["lower_03_crack"],
+      "objectives": [
+        {
+          "id": "talk_mira",
+          "type": "talk",
+          "npc": "mira",
+          "description": "Поговорить с Мирой"
+        },
+        {
+          "id": "choose_take",
+          "type": "choose",
+          "dialogueId": "mira_archive",
+          "nodeId": "which_key",
+          "choiceIndex": 0,
+          "description": "Взять задание Миры"
+        }
+      ],
+      "rewards": {
+        "items": [{"itemId": "salted_ledger", "amount": 1}],
+        "experience": 25,
+        "stats": {"schism": 2},
+        "globalFlags": ["mira.knows"],
+        "journal": ["Мира боится. Она нашла моё имя в свитке расходов."],
+        "rumors": ["salt_ledger"]
+      },
+      "unlockQuests": ["lower_05_seal_key"],
+      "journalEntries": ["Мира держит архив и просит первый ключ печати."],
+      "flagsOnComplete": ["player.met_mira"],
+      "marker": "Мира"
+    },
+    {
+      "id": "lower_05_seal_key",
+      "title": "Ключ первой печати",
+      "type": "main",
+      "chapter": "act1_lower",
+      "stage": 5,
+      "layer": "lower",
+      "zone": "sewer_mouth",
+      "requiresProzrenie": 1,
+      "prerequisites": ["lower_04_mira"],
+      "objectives": [
+        {
+          "id": "goto_mouth",
+          "type": "goto",
+          "zone": "sewer_mouth",
+          "description": "Дойти до устья стока"
+        },
+        {
+          "id": "goto_channel",
+          "type": "goto",
+          "zone": "channel",
+          "description": "Войти в канал"
+        },
+        {
+          "id": "kill_guard",
+          "type": "kill",
+          "entityType": "minecraft:zombie",
+          "amount": 1,
+          "zone": "channel",
+          "description": "Остановить сторожа печати"
+        },
+        {
+          "id": "collect_key",
+          "type": "collect",
+          "itemId": "seal_key",
+          "amount": 1,
+          "consume": true,
+          "description": "Взять ключ печати"
+        }
+      ],
+      "rewards": {
+        "experience": 50,
+        "stats": {"faith": -3, "corruption": -2, "global_points_bonus": 4},
+        "globalFlags": ["seal_key.first"],
+        "journal": ["Сторож говорил только приказами. Тишина. Не смотри. Не зови."],
+        "rumors": ["priest_carries_water"]
+      },
+      "unlockQuests": [],
+      "journalEntries": ["Ключ печати тяжёлый и влажный. Дверь без ручки ждёт его."],
+      "flagsOnComplete": ["player.has_first_seal_key", "chapter.act1.done"],
+      "marker": "Устье стока"
+    },
+    {
+      "id": "catchup_lower_after_shards",
+      "title": "След на стене",
+      "type": "catch_up",
+      "chapter": "act1_lower",
+      "stage": 2,
+      "layer": "lower",
+      "zone": "sealed_crack",
+      "requiresProzrenie": 0,
+      "catchUp": true,
+      "prerequisites": ["lower_01_awakening"],
+      "objectives": [
+        {
+          "id": "inspect_wall",
+          "type": "interact",
+          "blockId": "minecraft:cracked_stone_bricks",
+          "amount": 1,
+          "description": "Осмотреть шов на стене"
+        },
+        {
+          "id": "leave_mark",
+          "type": "interact",
+          "blockId": "minecraft:smooth_stone",
+          "amount": 1,
+          "description": "Оставить след на постаменте"
+        }
+      ],
+      "rewards": {
+        "experience": 20,
+        "stats": {"portal_shards_total": 1},
+        "globalFlags": ["shards.first_batch"],
+        "journal": ["Я не собирал осколки. Стена всё равно знает меня."]
+      },
+      "unlockQuests": ["lower_03_crack"],
+      "journalEntries": ["Стена узнаёт шаг, даже если осколки собрал кто-то другой."],
+      "flagsOnComplete": ["player.collected_first_shards", "player.saw_crack"]
+    },
+    {
+      "id": "aftermath_lower_channel",
+      "title": "Что осталось в канале",
+      "type": "aftermath",
+      "chapter": "act1_lower",
+      "stage": 2,
+      "layer": "lower",
+      "zone": "channel",
+      "aftermath": true,
+      "requiresProzrenie": 0,
+      "prerequisites": ["lower_01_awakening"],
+      "objectives": [
+        {
+          "id": "goto_channel",
+          "type": "goto",
+          "zone": "channel",
+          "description": "Спуститься в канал"
+        },
+        {
+          "id": "clean_silt",
+          "type": "survive",
+          "zone": "channel",
+          "ticks": 1200,
+          "persistProgress": true,
+          "description": "Прочистить участок канала"
+        },
+        {
+          "id": "talk_foreman",
+          "type": "talk",
+          "npc": "channel_foreman",
+          "description": "Доложить бригадиру"
+        }
+      ],
+      "rewards": {
+        "items": [{"itemId": "portal_shard", "amount": 1}],
+        "experience": 30,
+        "stats": {"corruption": -2, "portal_shards_total": 1},
+        "globalFlags": ["aftermath.channel"],
+        "journal": ["Канал чистый сверху и забит ниже. Ритуал прошёл без меня."],
+        "rumors": ["black_water"]
+      },
+      "unlockQuests": [],
+      "journalEntries": ["Ритуал закончился без меня. Следы видно и так."],
+      "flagsOnComplete": ["player.saw_aftermath"]
+    },
+    {
+      "id": "daily_lower_delivery",
+      "title": "Доставка по домам",
+      "type": "daily",
+      "chapter": "act1_lower",
+      "stage": 1,
+      "layer": "lower",
+      "zone": "lower_houses",
+      "dailyLimit": 2,
+      "prerequisites": ["lower_01_awakening"],
+      "objectives": [
+        {
+          "id": "goto_houses",
+          "type": "goto",
+          "zone": "lower_houses",
+          "description": "Дойти до домов нижнего слоя"
+        },
+        {
+          "id": "deliver",
+          "type": "deliver",
+          "npc": "vaya_guard",
+          "itemId": "salted_ledger",
+          "amount": 1,
+          "consume": true,
+          "description": "Передать свиток стражу Вайи"
+        }
+      ],
+      "rewards": {
+        "experience": 15,
+        "stats": {"portal_shards_total": 1},
+        "journal": ["Доставка идёт ровно. Считают шаги, не людей."]
+      },
+      "unlockQuests": [],
+      "journalEntries": ["Дома нижнего слоя носят свитки туда и обратно."]
+    },
+    {
+      "id": "daily_lower_clean_channel",
+      "title": "Чистка стока",
+      "type": "daily",
+      "chapter": "act1_lower",
+      "stage": 1,
+      "layer": "lower",
+      "zone": "channel",
+      "dailyLimit": 3,
+      "prerequisites": ["lower_01_awakening"],
+      "objectives": [
+        {
+          "id": "goto_channel",
+          "type": "goto",
+          "zone": "channel",
+          "description": "Спуститься в канал"
+        },
+        {
+          "id": "work",
+          "type": "survive",
+          "zone": "channel",
+          "ticks": 600,
+          "persistProgress": true,
+          "description": "Почистить участок"
+        }
+      ],
+      "rewards": {
+        "items": [{"itemId": "portal_shard", "amount": 1}],
+        "experience": 12,
+        "stats": {"corruption": -1},
+        "journal": ["Вода уносит соль вниз. След на руках до вечера."]
+      },
+      "unlockQuests": [],
+      "journalEntries": ["В стоке работа идёт молча. Никто не смотрит в глаза."]
+    },
+    {
+      "id": "daily_lower_scan_shards",
+      "title": "Проверка осколков",
+      "type": "daily",
+      "chapter": "act1_lower",
+      "stage": 2,
+      "layer": "lower",
+      "zone": "portal_clearing",
+      "dailyLimit": 2,
+      "prerequisites": ["lower_02_shards"],
+      "objectives": [
+        {
+          "id": "use_shard",
+          "type": "use_item",
+          "itemId": "portal_shard",
+          "amount": 1,
+          "description": "Проверить осколок у портала"
+        },
+        {
+          "id": "listen",
+          "type": "survive",
+          "zone": "portal_clearing",
+          "ticks": 400,
+          "persistProgress": true,
+          "description": "Выслушать гул портала"
+        }
+      ],
+      "rewards": {
+        "prozrenie": 1,
+        "experience": 15,
+        "stats": {"spark": 1},
+        "rumors": ["wall_breathes"],
+        "journal": ["Осколок отдаёт голос короткой волной. Слова различаю через раз."]
+      },
+      "unlockQuests": [],
+      "journalEntries": ["Осколки звучат. Слова приходят и обрываются."]
+    },
+    {
+      "id": "daily_lower_rumor_gathering",
+      "title": "Сбор слухов",
+      "type": "daily",
+      "chapter": "act1_lower",
+      "stage": 1,
+      "layer": "lower",
+      "dailyLimit": 2,
+      "prerequisites": ["lower_01_awakening"],
+      "objectives": [
+        {
+          "id": "reach_flag",
+          "type": "reach_flag",
+          "flagKey": "rumor.unlock.daily_lower_clean_channel",
+          "flagValue": "true",
+          "description": "Проследить слух до источника"
+        }
+      ],
+      "rewards": {
+        "experience": 15,
+        "stats": {"faith": 1},
+        "journal": ["Слух водит по кругу. Источник скрыт, но направление верное."]
+      },
+      "unlockQuests": [],
+      "journalEntries": ["Слухи расходятся по домам и возвращаются изменёнными."]
+    },
+    {
+      "id": "weekly_ritual_light_participation",
+      "title": "Участие в Ритуале света",
+      "type": "event",
+      "chapter": "act1_lower",
+      "stage": 1,
+      "layer": "lower",
+      "zone": "ritual_circle",
+      "prerequisites": ["lower_01_awakening"],
+      "objectives": [
+        {
+          "id": "gather",
+          "type": "goto",
+          "zone": "ritual_circle",
+          "description": "Встать в круг света"
+        },
+        {
+          "id": "hold",
+          "type": "survive",
+          "zone": "ritual_circle",
+          "ticks": 2000,
+          "persistProgress": true,
+          "description": "Держать круг"
+        }
+      ],
+      "rewards": {
+        "items": [{"itemId": "stranger_token", "amount": 1}],
+        "prozrenie": 1,
+        "experience": 60,
+        "stats": {"faith": 5, "spark": 1, "global_points_bonus": 2},
+        "globalFlags": ["event.ritual_light.done"],
+        "journal": ["Круг горел ровно. Служители стояли снаружи и смотрели вниз."],
+        "rumors": ["priest_carries_water"]
+      },
+      "unlockQuests": [],
+      "journalEntries": ["Ритуал света собрал круг. Огонь горел ровно."],
+      "flagsOnComplete": ["player.did_ritual"]
+    }
+  ]
+}

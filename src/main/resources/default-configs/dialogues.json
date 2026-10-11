@@ -1,0 +1,382 @@
+{
+  "dialogues": [
+    {
+      "id": "stranger_threshold",
+      "npc": "stranger",
+      "title": "Незнакомец",
+      "root": "root",
+      "nodes": [
+        {
+          "id": "root",
+          "npc": "stranger",
+          "root": true,
+          "text": [
+            "Порог сухой. Город за спиной мокрый.",
+            "Я говорю мало, потому что слова тут не держатся.",
+            "Внизу портал. Он закрыт. Он дышит.",
+            "Твои шаги оставляют след. Внутри город это учитывает."
+          ],
+          "choices": [
+            {
+              "index": 0,
+              "text": "Войти в город",
+              "next": "entry",
+              "effects": [
+                {"type": "enter_city"}
+              ]
+            },
+            {
+              "index": 1,
+              "text": "Что такое Искра?",
+              "next": "spark",
+              "conditions": [{"type": "always"}]
+            },
+            {
+              "index": 2,
+              "text": "Промолчать",
+              "next": "",
+              "terminal": true,
+              "effects": []
+            }
+          ]
+        },
+        {
+          "id": "spark",
+          "npc": "stranger",
+          "text": [
+            "Искра — тот, кто входит и меняет воздух.",
+            "Тебя так называют. Я не знаю, почему.",
+            "Порог помнит всех, кто входил. Он не помнит, зачем."
+          ],
+          "choices": [
+            {
+              "index": 0,
+              "text": "Войти в город",
+              "next": "entry",
+              "effects": [{"type": "enter_city"}]
+            },
+            {
+              "index": 1,
+              "text": "Назад",
+              "next": "root",
+              "effects": []
+            }
+          ]
+        },
+        {
+          "id": "entry",
+          "npc": "stranger",
+          "text": [
+            "Тогда иди. Спуск слева.",
+            "Камень там тёплый. Не стой на нём долго."
+          ],
+          "choices": [],
+          "effects": [
+            {"type": "set_player_flag", "key": "npc.met.stranger", "value": "true"},
+            {"type": "set_player_flag", "key": "title.spark", "value": "true"},
+            {"type": "enter_city"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nima_awakening",
+      "npc": "nima",
+      "title": "Нима",
+      "root": "root",
+      "nodes": [
+        {
+          "id": "root",
+          "npc": "nima",
+          "root": true,
+          "text": [
+            "Не наступи на чёрное. Оно ещё тёплое.",
+            "Портал дышит. Ты слышишь? Вот так, ровно.",
+            "Ты пришёл снизу или сверху? Не отвечай, я и так вижу."
+          ],
+          "choices": [
+            {
+              "index": 0,
+              "text": "Осмотреть портал",
+              "next": "inspect",
+              "conditions": [{"type": "always"}]
+            },
+            {
+              "index": 1,
+              "text": "Спросить про чёрные камни",
+              "next": "stones"
+            },
+            {
+              "index": 2,
+              "text": "Спросить, кто зашил стену",
+              "next": "wall",
+              "conditions": [{"type": "quest_active", "questId": "lower_03_crack"}]
+            },
+            {
+              "index": 3,
+              "text": "Промолчать",
+              "next": "silent",
+              "terminal": true
+            }
+          ]
+        },
+        {
+          "id": "inspect",
+          "npc": "nima",
+          "text": [
+            "Он не сломан. Сломанное выглядит иначе.",
+            "Смотри на камни по краю. Они гнутся внутрь, будто кто-то тянет.",
+            "Тронь один. Руку не отморозит, но след останется до утра."
+          ],
+          "choices": [
+            {"index": 0, "text": "Спросить про чёрные камни", "next": "stones"},
+            {"index": 1, "text": "Назад", "next": "root"}
+          ]
+        },
+        {
+          "id": "stones",
+          "npc": "nima",
+          "text": [
+            "Это то, на что нельзя ступать. Местные знают.",
+            "Я тоже знаю. Я тут стою каждый день и смотрю.",
+            "Если наступишь — портал выдохнет сильнее. Проверить хочешь?"
+          ],
+          "choices": [
+            {
+              "index": 0,
+              "text": "Наступить на чёрный камень",
+              "next": "step_on",
+              "effects": [{"type": "give_item", "itemId": "portal_shard", "amount": 1}]
+            },
+            {"index": 1, "text": "Не надо", "next": "root"},
+            {"index": 2, "text": "Сказать, что ты ищешь осколки", "next": "shards_offer"}
+          ],
+          "effects": [{"type": "set_player_flag", "key": "nima.told_stones", "value": "true"}]
+        },
+        {
+          "id": "step_on",
+          "npc": "nima",
+          "text": [
+            "Вот. Воздух пошёл волной, слышишь гул?",
+            "Портал берёт твой шаг и отдаёт осколок. Не спрашивай, как.",
+            "Теперь он знает тебя. Это не страшно, пока ты им не правишь."
+          ],
+          "choices": [
+            {"index": 0, "text": "Назад", "next": "root"}
+          ]
+        },
+        {
+          "id": "shards_offer",
+          "npc": "nima",
+          "text": [
+            "Ищешь. Хорошо. Я дам один, бесплатно.",
+            "Остальные возьми у стены. Она отдаёт каждому, кто стоит рядом.",
+            "Три осколка и трещина начнёт гудеть. Дальше — Мира."
+          ],
+          "choices": [
+            {
+              "index": 0,
+              "text": "Взять осколок",
+              "next": "root",
+              "effects": [{"type": "give_item", "itemId": "portal_shard", "amount": 1}]
+            }
+          ]
+        },
+        {
+          "id": "wall",
+          "npc": "nima",
+          "text": [
+            "Стену зашили. Провода идёт по швам, будто шов у латного.",
+            "Я не видела, кто. Я увидела, что она стала ровно дышать.",
+            "Она дышит глуше, чем вчера. Сейчас ровно. Это хуже."
+          ],
+          "choices": [
+            {"index": 0, "text": "Осмотреть трещину", "next": "crack_look"},
+            {"index": 1, "text": "Назад", "next": "root"}
+          ]
+        },
+        {
+          "id": "crack_look",
+          "npc": "nima",
+          "text": [
+            "Трещина холодная. Стена вокруг — нет.",
+            "Из трещины сыпется вода, а крысы бегут из канала вверх.",
+            "Не лезь внутрь. Оттуда тянет холодом и голоса не будет."
+          ],
+          "choices": [{"index": 0, "text": "Назад", "next": "root"}]
+        },
+        {
+          "id": "silent",
+          "npc": "nima",
+          "text": ["Правильно. Меньше слов — меньше следов."],
+          "effects": [{"type": "set_player_flag", "key": "nima.silent", "value": "true"}]
+        }
+      ]
+    },
+    {
+      "id": "nima_shards",
+      "npc": "nima",
+      "title": "Нима",
+      "root": "root",
+      "nodes": [
+        {
+          "id": "root",
+          "npc": "nima",
+          "root": true,
+          "text": ["Осколки у тебя гудит. Слышно даже без прикосновения."],
+          "choices": [
+            {
+              "index": 0,
+              "text": "Отдать все осколки",
+              "next": "hand_in",
+              "conditions": [{"type": "has_item", "itemId": "portal_shard", "count": 3}]
+            },
+            {"index": 1, "text": "Позже", "next": "", "terminal": true}
+          ]
+        },
+        {
+          "id": "hand_in",
+          "npc": "nima",
+          "text": [
+            "Три штуки. Хватит, чтобы трещина ответила.",
+            "Неси к стене. Когда положишь — ступай назад."
+          ],
+          "effects": [
+            {"type": "complete_quest", "questId": "lower_02_shards"},
+            {"type": "start_quest", "questId": "lower_03_crack"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "mira_archive",
+      "npc": "mira",
+      "title": "Мира",
+      "root": "root",
+      "nodes": [
+        {
+          "id": "root",
+          "npc": "nima",
+          "root": true,
+          "text": [
+            "Тише. Полки реагируют на шаги.",
+            "Я тут одна. Смотритель ушёл вниз, служители не поднимаются.",
+            "Мне нужен первый ключ печати. Не для себя — для двери."
+          ],
+          "conditions": [{"type": "always"}],
+          "choices": [
+            {"index": 0, "text": "Какой ключ?", "next": "which_key"},
+            {"index": 1, "text": "Где дверь?", "next": "where_door"},
+            {"index": 2, "text": "Уйти", "next": "", "terminal": true}
+          ]
+        },
+        {
+          "id": "which_key",
+          "npc": "mira",
+          "text": [
+            "Первая печать открывает дверь без ручки.",
+            "В свитках она числится как расход. Не как печать.",
+            "Я нашла запись ночью. Имя в ней — моё."
+          ],
+          "choices": [
+            {"index": 0, "text": "Взять задание", "next": "take_job"},
+            {"index": 1, "text": "Назад", "next": "root"}
+          ]
+        },
+        {
+          "id": "take_job",
+          "npc": "mira",
+          "text": [
+            "Ищи в канале. Устье стока за решёткой.",
+            "Ключ держит тот, кого поставили сторожить. Он говорит только приказами."
+          ],
+          "effects": [
+            {"type": "start_quest", "questId": "lower_04_mira"},
+            {"type": "set_player_flag", "key": "mira.talked", "value": "true"},
+            {"type": "add_journal", "journal": "Мира просит первый ключ печати. В свитках он числится как расход."}
+          ],
+          "choices": [{"index": 0, "text": "Идти в канал", "next": "", "terminal": true}]
+        },
+        {
+          "id": "where_door",
+          "npc": "mira",
+          "text": ["Внизу, у арки. Дверь без ручки и без петли."],
+          "choices": [{"index": 0, "text": "Назад", "next": "root"}]
+        }
+      ]
+    },
+    {
+      "id": "vaya_guard_check",
+      "npc": "vaya_guard",
+      "title": "Страж Вайи",
+      "root": "root",
+      "nodes": [
+        {
+          "id": "root",
+          "npc": "vaya_guard",
+          "root": true,
+          "text": [
+            "Стоять. Ты с портала?",
+            "Тогда слушай: чёрные камни не трогать. Воду из колодца не пить.",
+            "Дальше — если нужен ключ. Без него обратно."
+          ],
+          "choices": [
+            {"index": 0, "text": "У меня есть осколки", "next": "with_shards",
+             "conditions": [{"type": "has_item", "itemId": "portal_shard", "count": 1}]},
+            {"index": 1, "text": "Я ищу ключ печати", "next": "seal_key"},
+            {"index": 2, "text": "Ничего не нужно", "next": "", "terminal": true}
+          ]
+        },
+        {
+          "id": "with_shards",
+          "npc": "vaya_guard",
+          "text": ["Прячь. На ярусах такие видят за три шага."],
+          "choices": [{"index": 0, "text": "Назад", "next": "root"}]
+        },
+        {
+          "id": "seal_key",
+          "npc": "vaya_guard",
+          "text": [
+            "Тогда в канал. Решётка у арки.",
+            "И не стой на белом камне. Там след остаётся на несколько дней."
+          ],
+          "effects": [{"type": "set_player_flag", "key": "guard.told_channel", "value": "true"}]
+        }
+      ]
+    },
+    {
+      "id": "aftermath_missing_event",
+      "npc": "channel_foreman",
+      "title": "Бригадир канала",
+      "root": "root",
+      "nodes": [
+        {
+          "id": "root",
+          "npc": "channel_foreman",
+          "root": true,
+          "text": [
+            "Ты опоздал. Ритуал прошёл без тебя.",
+            "Канал теперь чистый по участку, но ниже забит.",
+            "Пойдёшь вниз — увидишь, что осталось."
+          ],
+          "conditions": [{"type": "always"}],
+          "choices": [
+            {
+              "index": 0,
+              "text": "Взять последствия",
+              "next": "take",
+              "effects": [{"type": "start_quest", "questId": "aftermath_lower_channel"}]
+            },
+            {"index": 1, "text": "Не сейчас", "next": "", "terminal": true}
+          ]
+        },
+        {
+          "id": "take",
+          "npc": "channel_foreman",
+          "text": ["Тогда вниз. Возьми лопату. Работа не праздная."],
+          "effects": [{"type": "set_player_flag", "key": "aftermath.channel", "value": "true"}]
+        }
+      ]
+    }
+  ]
+}

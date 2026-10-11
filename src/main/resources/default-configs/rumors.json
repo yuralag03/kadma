@@ -1,0 +1,96 @@
+{
+  "rumors": [
+    {
+      "id": "wall_breathes",
+      "text": "Стена дышит, когда никто не смотрит. Смотритель говорит, что она дышит ровно.",
+      "trigger": "stat_min",
+      "stat": "corruption",
+      "threshold": 20,
+      "layer": "lower",
+      "reliability": "uncertain",
+      "unlocks": ["daily_lower_clean_channel"],
+      "contradicts": ["black_water"],
+      "cooldownMinutes": 120
+    },
+    {
+      "id": "black_water",
+      "text": "В нижнем колодце вода стала сладкой. Дети пьют. Взрослые молчат.",
+      "trigger": "stat_min",
+      "stat": "corruption",
+      "threshold": 25,
+      "layer": "lower",
+      "reliability": "doubtful",
+      "unlocks": ["daily_lower_clean_channel"],
+      "contradicts": ["wall_breathes"],
+      "cooldownMinutes": 180
+    },
+    {
+      "id": "salt_ledger",
+      "text": "В архиве нашли свиток, где люди записаны как расход. Края пропитаны солью.",
+      "trigger": "quest_completed",
+      "questId": "lower_04_mira",
+      "layer": "lower",
+      "reliability": "certain",
+      "unlocks": ["daily_lower_delivery"],
+      "contradicts": [],
+      "cooldownMinutes": 240
+    },
+    {
+      "id": "child_drawing_door",
+      "text": "Дети рисуют двери без ручек. Смотритель велел стереть мелом, но след остаётся.",
+      "trigger": "stat_min",
+      "stat": "schism",
+      "threshold": 10,
+      "layer": "lower",
+      "reliability": "uncertain",
+      "unlocks": ["daily_lower_rumor_gathering"],
+      "contradicts": ["priest_carries_water"],
+      "cooldownMinutes": 300
+    },
+    {
+      "id": "priest_carries_water",
+      "text": "Служитель несёт воду вверх ведрами. Он шагает ровно и не оборачивается.",
+      "trigger": "event_completed",
+      "eventId": "ritual_light",
+      "layer": "lower",
+      "reliability": "certain",
+      "unlocks": [],
+      "contradicts": ["child_drawing_door"],
+      "cooldownMinutes": 360
+    },
+    {
+      "id": "portal_opens_below",
+      "text": "Портал открывается снизу, а не сверху. Смотритель спорит со стражем.",
+      "trigger": "global_flag",
+      "globalFlag": "shards.first_batch",
+      "layer": "lower",
+      "reliability": "doubtful",
+      "unlocks": [],
+      "contradicts": ["wall_breathes"],
+      "cooldownMinutes": 360
+    },
+    {
+      "id": "sweet_after_ritual",
+      "text": "После ритуала в колодце вода сладкая. Смотритель перестал пить из дома.",
+      "trigger": "global_flag",
+      "globalFlag": "event.ritual_light.done",
+      "layer": "lower",
+      "reliability": "uncertain",
+      "unlocks": [],
+      "contradicts": [],
+      "cooldownMinutes": 420
+    },
+    {
+      "id": "workers_avoid_eyes",
+      "text": "Рабочие в канале не смотрят в глаза. Они смотрят на руки и работают быстрее.",
+      "trigger": "contradiction",
+      "stat": "schism",
+      "threshold": 0,
+      "layer": "lower",
+      "reliability": "certain",
+      "unlocks": ["daily_lower_clean_channel"],
+      "contradicts": ["black_water"],
+      "cooldownMinutes": 300
+    }
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "npcs": [
+    {
+      "id": "stranger",
+      "displayName": "Незнакомец",
+      "title": "Хранитель порога",
+      "layer": "lobby",
+      "zone": "",
+      "dialogueRoot": "stranger_threshold",
+      "dialogueId": "stranger_threshold",
+      "invisible": true,
+      "marker": true,
+      "headItem": "minecraft:lodestone",
+      "spawn": {
+        "world": "minecraft:overworld",
+        "x": 100.5,
+        "y": 90.0,
+        "z": 103.5,
+        "yaw": 180.0
+      }
+    },
+    {
+      "id": "nima",
+      "displayName": "Нима",
+      "title": "Смотритель портала",
+      "layer": "lower",
+      "zone": "portal_clearing",
+      "dialogueRoot": "nima_awakening",
+      "dialogueId": "nima_awakening",
+      "invisible": false,
+      "marker": false,
+      "headItem": "minecraft:iron_ingot",
+      "spawn": {
+        "world": "minecraft:overworld",
+        "x": 3.5,
+        "y": 42.0,
+        "z": 3.5,
+        "yaw": 225.0
+      }
+    },
+    {
+      "id": "mira",
+      "displayName": "Мира",
+      "title": "Архивариус",
+      "layer": "lower",
+      "zone": "archive_hall",
+      "dialogueRoot": "mira_archive",
+      "dialogueId": "mira_archive",
+      "invisible": false,
+      "marker": false,
+      "headItem": "minecraft:book",
+      "spawn": {
+        "world": "minecraft:overworld",
+        "x": 22.5,
+        "y": 42.0,
+        "z": 16.5,
+        "yaw": 135.0
+      }
+    },
+    {
+      "id": "vaya_guard",
+      "displayName": "Страж Вайи",
+      "title": "Дозорный у подъёма",
+      "layer": "lower",
+      "zone": "lower_houses",
+      "dialogueRoot": "vaya_guard_check",
+      "dialogueId": "vaya_guard_check",
+      "invisible": false,
+      "marker": false,
+      "headItem": "minecraft:iron_helmet",
+      "spawn": {
+        "world": "minecraft:overworld",
+        "x": -20.5,
+        "y": 42.0,
+        "z": -20.5,
+        "yaw": 45.0
+      }
+    },
+    {
+      "id": "channel_foreman",
+      "displayName": "Бригадир канала",
+      "title": "Старший над стоком",
+      "layer": "lower",
+      "zone": "channel",
+      "dialogueRoot": "aftermath_missing_event",
+      "dialogueId": "aftermath_missing_event",
+      "invisible": false,
+      "marker": false,
+      "headItem": "minecraft:leather_helmet",
+      "spawn": {
+        "world": "minecraft:overworld",
+        "x": -10.5,
+        "y": 32.0,
+        "z": 22.5,
+        "yaw": 0.0
+      }
+    }
+  ]
+}

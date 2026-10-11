@@ -1,0 +1,27 @@
+# This is an example mods.toml file. It contains the data relating to the loading mods.
+modLoader="javafml"
+loaderVersion="[47,48)"
+license="MIT"
+issueTrackerURL="https://github.com/example/kadma/issues"
+
+[[mods]]
+modId="kadma"
+version="1.0.0"
+displayName="Kadma Story Engine"
+description='''Kadma Story Engine is a server-authoritative narrative engine for a vertical medieval city. It provides chapters, quests, NPC dialogues, world state, catch-up mechanics, rumors, daily duties, weekly rites and a lobby bridge called the Threshold.'''
+authors="Yuri"
+displayTest="MATCH_VERSION"
+
+[[dependencies.kadma]]
+    modId="forge"
+    mandatory=true
+    versionRange="[47.3.0,48.0.0)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.kadma]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.20.1,1.21)"
+    ordering="NONE"
+    side="BOTH"

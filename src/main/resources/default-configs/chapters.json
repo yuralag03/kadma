@@ -1,0 +1,125 @@
+{
+  "chapters": [
+    {
+      "id": "act0_threshold",
+      "title": "Акт 0: Порог",
+      "description": "Каменный порог за стенами. Незнакомец говорит коротко и не объясняет город.",
+      "order": 0,
+      "openDays": 14,
+      "requiredGlobalPoints": 0,
+      "requiredPlayerCount": 1,
+      "entryQuests": ["prologue_fall"],
+      "lateEntryQuests": ["prologue_fall"],
+      "aftermathQuests": [],
+      "exitConditions": ["prologue_fall"],
+      "nextChapter": "act1_lower",
+      "layer": "lobby",
+      "journalOnOpen": [
+        "Я стою на пороге. Камень под ногами сухой, воздух прохладный.",
+        "Незнакомец говорит мало. Он ждёт, пока я войду."
+      ],
+      "rumorsOnOpen": ["wall_breathes"],
+      "globalEffects": {
+        "stats": {"spark": 1},
+        "flags": ["threshold.open"]
+      }
+    },
+    {
+      "id": "act1_lower",
+      "title": "Акт 1: Трещина",
+      "description": "Нижний слой. Запечатанный портал дышит, чёрные камни тёплые, стена зашита проводами.",
+      "order": 1,
+      "openDays": 10,
+      "requiredGlobalPoints": 8,
+      "requiredPlayerCount": 1,
+      "entryQuests": ["lower_01_awakening"],
+      "lateEntryQuests": ["catchup_lower_after_shards"],
+      "aftermathQuests": ["aftermath_lower_channel"],
+      "exitConditions": ["lower_05_seal_key"],
+      "exitQuests": ["lower_04_mira", "lower_05_seal_key"],
+      "nextChapter": "act2_craft_placeholder",
+      "layer": "lower",
+      "journalOnOpen": [
+        "Нижний слой мокрый. Вода стекает по стенам и не исчезает.",
+        "Портал стоит в кругe из чёрных камней. Он не ruins, он дышит."
+      ],
+      "rumorsOnOpen": ["black_water", "salt_ledger"],
+      "globalEffects": {
+        "stats": {"corruption": 2},
+        "flags": ["lower.open"]
+      }
+    },
+    {
+      "id": "act2_craft_placeholder",
+      "title": "Акт 2: Ремесленный ярус",
+      "description": "Заглушка. Мосты, дым и первый ключ от двери печати.",
+      "order": 2,
+      "openDays": 12,
+      "requiredGlobalPoints": 24,
+      "requiredPlayerCount": 1,
+      "entryQuests": ["lower_05_seal_key"],
+      "lateEntryQuests": ["lower_05_seal_key"],
+      "aftermathQuests": [],
+      "exitConditions": [],
+      "nextChapter": "act3_trade_placeholder",
+      "layer": "craft",
+      "journalOnOpen": ["Подъём открыт. Мосты выше пахнут дымом."],
+      "rumorsOnOpen": ["child_drawing_door"],
+      "globalEffects": {"stats": {"faith": -1}, "flags": ["craft.open"]}
+    },
+    {
+      "id": "act3_trade_placeholder",
+      "title": "Акт 3: Торговый ярус",
+      "description": "Заглушка. Ряды, книги и цена на воду.",
+      "order": 3,
+      "openDays": 12,
+      "requiredGlobalPoints": 48,
+      "requiredPlayerCount": 1,
+      "entryQuests": ["daily_lower_delivery"],
+      "lateEntryQuests": ["daily_lower_delivery"],
+      "aftermathQuests": [],
+      "exitConditions": [],
+      "nextChapter": "act4_temple_placeholder",
+      "layer": "trade",
+      "journalOnOpen": ["Ряды открыты. Цены растут вверх вместе с ярусами."],
+      "rumorsOnOpen": ["salt_ledger"],
+      "globalEffects": {"stats": {"schism": 1}, "flags": ["trade.open"]}
+    },
+    {
+      "id": "act4_temple_placeholder",
+      "title": "Акт 4: Храмовый ярус",
+      "description": "Заглушка. Служители ходят ровно, вода поднимается снизу.",
+      "order": 4,
+      "openDays": 14,
+      "requiredGlobalPoints": 72,
+      "requiredPlayerCount": 1,
+      "entryQuests": [],
+      "lateEntryQuests": [],
+      "aftermathQuests": [],
+      "exitConditions": [],
+      "nextChapter": "act5_final_placeholder",
+      "layer": "temple",
+      "journalOnOpen": ["Белый камень. Служители не смотрят на подъём."],
+      "rumorsOnOpen": ["priest_carries_water"],
+      "globalEffects": {"stats": {"faith": -2}, "flags": ["temple.open"]}
+    },
+    {
+      "id": "act5_final_placeholder",
+      "title": "Акт 5: Печать",
+      "description": "Заглушка. Дверь без ручки и круг света под ней.",
+      "order": 5,
+      "openDays": 21,
+      "requiredGlobalPoints": 120,
+      "requiredPlayerCount": 1,
+      "entryQuests": [],
+      "lateEntryQuests": [],
+      "aftermathQuests": [],
+      "exitConditions": [],
+      "nextChapter": "",
+      "layer": "temple",
+      "journalOnOpen": ["Круг света под дверью. Пульс идёт снизу."],
+      "rumorsOnOpen": ["wall_breathes"],
+      "globalEffects": {"stats": {"spark": 1}, "flags": ["seal.reached"]}
+    }
+  ]
+}

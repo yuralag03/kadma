@@ -1,0 +1,59 @@
+{
+  "items": [
+    {
+      "id": "portal_shard",
+      "displayName": "Осколок портала",
+      "baseItem": "minecraft:amethyst_shard",
+      "lore": [
+        "Осколок с запечатанного портала",
+        "Он тёплый, пока его держат",
+        "Гул идёт от него короткими волнами"
+      ],
+      "glow": true,
+      "unbreakable": false,
+      "customModelData": 1001
+    },
+    {
+      "id": "seal_key",
+      "displayName": "Ключ печати",
+      "baseItem": "minecraft:tripwire_hook",
+      "lore": [
+        "Ключ от двери без ручки",
+        "Металл влажный, как камень"
+      ],
+      "glow": true,
+      "unbreakable": true,
+      "customModelData": 1002
+    },
+    {
+      "id": "salted_ledger",
+      "displayName": "Солёный свиток",
+      "baseItem": "minecraft:paper",
+      "lore": [
+        "Свиток с записями о людях как о расходе",
+        "Края пропитаны солью"
+      ],
+      "glow": false
+    },
+    {
+      "id": "channel_kit",
+      "displayName": "Набор для канала",
+      "baseItem": "minecraft:iron_shovel",
+      "lore": [
+        "Лопата и тряпка для чистки стока",
+        "Вещь рабочая, не праздничная"
+      ],
+      "glow": false
+    },
+    {
+      "id": "stranger_token",
+      "displayName": "Жетон порога",
+      "baseItem": "minecraft:lodestone",
+      "lore": [
+        "Жетон от Незнакомца",
+        "Он тяжёлый и держится тёплым"
+      ],
+      "glow": true
+    }
+  ]
+}
